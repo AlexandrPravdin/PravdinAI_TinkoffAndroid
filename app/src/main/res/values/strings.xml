@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">КиноХранилище: Топ Фильмов</string>
+    <string name="retry">Повторить</string>
+    <string name="error_message">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+</resources>

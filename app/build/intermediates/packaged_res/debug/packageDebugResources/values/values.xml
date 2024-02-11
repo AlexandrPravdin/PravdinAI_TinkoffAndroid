@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="large">16dp</dimen>
+    <dimen name="medium">8dp</dimen>
+    <dimen name="progres_indicator_size">70dp</dimen>
+    <dimen name="small">4dp</dimen>
+    <string name="app_name">КиноХранилище: Топ Фильмов</string>
+    <string name="error_message">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="retry">Повторить</string>
+    <style name="Theme.PravdinAI_TinkoffAndroid" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>

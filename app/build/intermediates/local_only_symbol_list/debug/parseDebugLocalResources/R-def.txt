@@ -1,0 +1,25 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+dimen large
+dimen medium
+dimen progres_indicator_size
+dimen small
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable image_mokup
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
+string app_name
+string error_message
+string retry
+style Theme.PravdinAI_TinkoffAndroid
+xml backup_rules
+xml data_extraction_rules
