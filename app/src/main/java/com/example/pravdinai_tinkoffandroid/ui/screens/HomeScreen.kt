@@ -52,7 +52,8 @@ fun HomeScreen(
             title = {
                 Text(
                     text = "Главная",
-
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold
                 )
             })
     }) { innerPadding ->
@@ -169,5 +170,5 @@ fun FilmCardPreview() {
 @Preview(showBackground = true)
 @Composable
 fun HomePreview(){
-
+    HomeScreen(allFilms = emptyList(), onCardClick = {})
 }

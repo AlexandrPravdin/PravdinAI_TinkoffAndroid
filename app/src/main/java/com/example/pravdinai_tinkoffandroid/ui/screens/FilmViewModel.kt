@@ -57,7 +57,6 @@ class FilmViewModel(
             } catch (e: HttpException) {
                 HomeUiState.Error(errorName = e.message ?: "")
             }
-
         }
     }
 

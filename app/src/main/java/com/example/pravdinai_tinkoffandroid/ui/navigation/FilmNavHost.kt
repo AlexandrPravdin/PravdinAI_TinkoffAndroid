@@ -60,6 +60,7 @@ fun AppNavHost(
                         onBackButtonPressed = { navController.popBackStack() }
                     )
                 }
+
                 is HomeUiState.Error -> {
                     ErrorScreen({ viewModel.initializeUiState() })
                 }
