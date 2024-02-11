@@ -5,13 +5,11 @@ import com.example.pravdinai_tinkoffandroid.data.FilmRepository
 class FilmNetworkRepository(
     private val filmApiService: FilmApiService
 ) : FilmRepository {
-    override suspend fun getFilms(): List<Film> {
-        val response = filmApiService.getFilms()
-        val filmList: MutableList<Film> = mutableListOf()
-        response.films.forEach { item ->
-            filmList.add(item)
-        }
-        val filmList2 = response.films
-        return filmList2
-    }
+    override suspend fun getFilms(): List<Film> =
+        filmApiService.getFilms().films
+
+
+    override suspend fun getFilmById(id: Int): FilmDetailed =
+        filmApiService.getFilmById(id)
+
 }

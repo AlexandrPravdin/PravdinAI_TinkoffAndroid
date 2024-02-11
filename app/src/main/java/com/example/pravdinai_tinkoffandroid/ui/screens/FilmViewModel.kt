@@ -10,13 +10,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pravdinai_tinkoffandroid.data.FilmRepository
 import com.example.pravdinai_tinkoffandroid.data.network.Film
+import com.example.pravdinai_tinkoffandroid.data.network.FilmDetailed
 import kotlinx.coroutines.launch
 import okio.IOException
 
 sealed interface HomeUiState {
     data class Success(
         val response: List<Film>,
-        var currentSelectedFilm: Film
+        var currentSelectedFilm: FilmDetailed
     ) : HomeUiState
 
     data class Error(
@@ -46,9 +47,10 @@ class FilmViewModel(
         viewModelScope.launch {
             uiState = try {
                 val response = filmRepository.getFilms()
+                val currentSelectedFilm = filmRepository.getFilmById(response.first().filmId)
                 HomeUiState.Success(
                     response = response,
-                    currentSelectedFilm = response[0]
+                    currentSelectedFilm = currentSelectedFilm
                 )
             } catch (e: IOException) {
                 HomeUiState.Error(errorName = e.message ?: "")
@@ -59,9 +61,18 @@ class FilmViewModel(
         }
     }
 
-    fun updateDetailsScreenStates(film: Film){
-        uiState = (uiState as HomeUiState.Success).copy(
-            currentSelectedFilm = film
-        )
+    fun updateDetailsScreenStates(film: Film) {
+//        uiState = HomeUiState.Loading
+        viewModelScope.launch {
+            uiState = try {
+                (uiState as HomeUiState.Success).copy(
+                    currentSelectedFilm = filmRepository.getFilmById(film.filmId)
+                )
+            } catch (e: IOException) {
+                HomeUiState.Error(errorName = e.message ?: "")
+            } catch (e: HttpException) {
+                HomeUiState.Error(errorName = e.message ?: "")
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import com.example.pravdinai_tinkoffandroid.data.network.Film
 import com.example.pravdinai_tinkoffandroid.ui.AppViewModelProvider
 import com.example.pravdinai_tinkoffandroid.ui.screens.DetailsScreen
 import com.example.pravdinai_tinkoffandroid.ui.screens.ErrorScreen
@@ -35,7 +35,11 @@ fun AppNavHost(
             when (uiState) {
                 is HomeUiState.Success -> {
                     HomeScreen(
-                        uiState.response,
+                        allFilms = uiState.response,
+                        onCardClick = { film: Film ->
+                            viewModel.updateDetailsScreenStates(film)
+                            navController.navigate("DetailsScreen")
+                        }
                     )
                 }
 
@@ -49,7 +53,21 @@ fun AppNavHost(
             }
         }
         composable("DetailsScreen") {
-            DetailsScreen()
+            when (uiState) {
+                is HomeUiState.Success -> {
+                    DetailsScreen(
+                        film = uiState.currentSelectedFilm,
+                        onBackButtonPressed = { navController.popBackStack() }
+                    )
+                }
+                is HomeUiState.Error -> {
+                    ErrorScreen({ viewModel.initializeUiState() })
+                }
+
+                is HomeUiState.Loading -> {
+                    LoadingScreen()
+                }
+            }
         }
     }
 }

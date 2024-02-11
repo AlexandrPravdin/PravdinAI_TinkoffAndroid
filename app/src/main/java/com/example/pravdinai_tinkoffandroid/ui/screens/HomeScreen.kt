@@ -40,11 +40,12 @@ import com.example.pravdinai_tinkoffandroid.ui.screens.utils.firstLetterToUpperC
 @Composable
 fun HomeScreen(
     allFilms: List<Film>,
+    onCardClick: (Film) -> Unit,
     modifier: Modifier = Modifier
 ) {
     HomeScreenColumn(
         modifier = modifier,
-        onHomeScreenCardClick = {},
+        onHomeScreenCardClick = onCardClick,
         allFilms = allFilms
     )
 }
