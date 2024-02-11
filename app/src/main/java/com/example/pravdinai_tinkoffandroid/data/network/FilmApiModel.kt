@@ -32,6 +32,7 @@ data class Genre(
     val genre: String
 )
 
+
 @Serializable
 data class Country(
     val country: String
