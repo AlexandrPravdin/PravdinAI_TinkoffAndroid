@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
 }
 
 android {
@@ -84,4 +85,10 @@ dependencies {
 
 //  Coroutines
     testImplementation(libs.kotlinx.coroutines.test)
+//  Room
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.core:core-ktx:1.10.1")
+    ksp("androidx.room:room-compiler:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+
 }

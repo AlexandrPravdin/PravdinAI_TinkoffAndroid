@@ -9,15 +9,21 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pravdinai_tinkoffandroid.data.FilmRepository
+import com.example.pravdinai_tinkoffandroid.data.local.FilmEntity
+import com.example.pravdinai_tinkoffandroid.data.local.FilmEntityDao
+import com.example.pravdinai_tinkoffandroid.data.local.toFilmEntity
 import com.example.pravdinai_tinkoffandroid.data.network.Film
 import com.example.pravdinai_tinkoffandroid.data.network.FilmDetailed
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import okio.IOException
 
 sealed interface HomeUiState {
     data class Success(
         val response: List<Film>,
-        var currentSelectedFilm: FilmDetailed
+        var currentSelectedFilm: FilmDetailed,
+        var favouriteFilms: Flow<List<FilmEntity>>
     ) : HomeUiState
 
     data class Error(
@@ -29,9 +35,17 @@ sealed interface HomeUiState {
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 class FilmViewModel(
-    private val filmRepository: FilmRepository,
+    private val filmRemoteRepository: FilmRepository,
+    private val filmEntityDao: FilmEntityDao,
 ) : ViewModel() {
 
+    fun getAllFavouriteFilms(): Flow<List<FilmEntity>> = filmEntityDao.getAllFilms()
+
+    fun insertFilmToFavourite(film: Film){
+        viewModelScope.launch {
+            filmEntityDao.insert(filmEntity = film.toFilmEntity())
+        }
+    }
     var uiState: HomeUiState by mutableStateOf(
         HomeUiState.Loading
     )
@@ -46,11 +60,12 @@ class FilmViewModel(
         uiState = HomeUiState.Loading
         viewModelScope.launch {
             uiState = try {
-                val response = filmRepository.getFilms()
-                val currentSelectedFilm = filmRepository.getFilmById(response.first().filmId)
+                val response = filmRemoteRepository.getFilms()
+                val currentSelectedFilm = filmRemoteRepository.getFilmById(response.first().filmId)
                 HomeUiState.Success(
                     response = response,
-                    currentSelectedFilm = currentSelectedFilm
+                    currentSelectedFilm = currentSelectedFilm,
+                    favouriteFilms = getAllFavouriteFilms()
                 )
             } catch (e: IOException) {
                 HomeUiState.Error(errorName = e.message ?: "")
@@ -60,18 +75,24 @@ class FilmViewModel(
         }
     }
 
-    fun updateDetailsScreenStates(film: Film) {
+    fun updateRemoteDetailsScreenStates(film: Film) {
 //        uiState = HomeUiState.Loading
         viewModelScope.launch {
             uiState = try {
                 (uiState as HomeUiState.Success).copy(
-                    currentSelectedFilm = filmRepository.getFilmById(film.filmId)
+                    currentSelectedFilm = filmRemoteRepository.getFilmById(film.filmId)
                 )
             } catch (e: IOException) {
                 HomeUiState.Error(errorName = e.message ?: "")
             } catch (e: HttpException) {
                 HomeUiState.Error(errorName = e.message ?: "")
             }
+        }
+    }
+
+    fun updateLocalDetailsScreenStates(film: Film) {
+        viewModelScope.launch {
+
         }
     }
 }

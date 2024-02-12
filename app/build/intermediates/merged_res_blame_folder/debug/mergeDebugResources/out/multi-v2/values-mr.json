@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pravdinai_tinkoffandroid.app-mergeDebugResources-52:/values-mr/values-mr.xml",
+            "outputFile": "com.example.pravdinai_tinkoffandroid.app-mergeDebugResources-56:/values-mr/values-mr.xml",
             "map": [
                 {
-                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/bdfc71ce8a7925878fa7e87e45a14a24/transformed/foundation-release/res/values-mr/values-mr.xml",
+                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/ad2d952fcf57d78d317b44acd87e9ab0/transformed/foundation-release/res/values-mr/values-mr.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/2cef61cfc8c00d58d9910375ea3c314d/transformed/ui-release/res/values-mr/values-mr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,199,281,378,476,563,649,734,823,906,975,1045,1125,1210,1281,1357,1423",
-                        "endColumns": "93,81,96,97,86,85,84,88,82,68,69,79,84,70,75,65,117",
-                        "endOffsets": "194,276,373,471,558,644,729,818,901,970,1040,1120,1205,1276,1352,1418,1536"
-                    },
-                    "to": {
-                        "startLines": "13,14,47,48,50,52,53,54,55,56,57,58,59,61,65,66,67",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1305,1399,5091,5188,5358,5527,5613,5698,5787,5870,5939,6009,6089,6255,6609,6685,6751",
-                        "endColumns": "93,81,96,97,86,85,84,88,82,68,69,79,84,70,75,65,117",
-                        "endOffsets": "1394,1476,5183,5281,5440,5608,5693,5782,5865,5934,6004,6084,6169,6321,6680,6746,6864"
-                    }
-                },
-                {
-                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/e9ed1d79b80bf4d338ee32cc53a9c6c9/transformed/material3-1.1.1/res/values-mr/values-mr.xml",
+                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/3493f94cfcbdfb4c0c86b86c08cfe1cb/transformed/material3-1.1.1/res/values-mr/values-mr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/d36ef96f637e99f497897974b37ad081/transformed/core-1.12.0/res/values-mr/values-mr.xml",
+                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/47fbadaed4a6f0311fcf6e957086f0f3/transformed/ui-release/res/values-mr/values-mr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,199,281,378,476,563,649,734,823,906,975,1045,1125,1210,1281,1357,1423",
+                        "endColumns": "93,81,96,97,86,85,84,88,82,68,69,79,84,70,75,65,117",
+                        "endOffsets": "194,276,373,471,558,644,729,818,901,970,1040,1120,1205,1276,1352,1418,1536"
+                    },
+                    "to": {
+                        "startLines": "13,14,47,48,50,52,53,54,55,56,57,58,59,61,65,66,67",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1305,1399,5091,5188,5358,5527,5613,5698,5787,5870,5939,6009,6089,6255,6609,6685,6751",
+                        "endColumns": "93,81,96,97,86,85,84,88,82,68,69,79,84,70,75,65,117",
+                        "endOffsets": "1394,1476,5183,5281,5440,5608,5693,5782,5865,5934,6004,6084,6169,6321,6680,6746,6864"
+                    }
+                },
+                {
+                    "source": "/Users/aleksandrpravdin/.gradle/caches/transforms-3/4660611627fe261ae46da0823c04bee7/transformed/core-1.12.0/res/values-mr/values-mr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

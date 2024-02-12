@@ -3,11 +3,13 @@ package com.example.pravdinai_tinkoffandroid.ui.navigation
 import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pravdinai_tinkoffandroid.data.local.mapToFilms
 import com.example.pravdinai_tinkoffandroid.data.network.Film
 import com.example.pravdinai_tinkoffandroid.ui.AppViewModelProvider
 import com.example.pravdinai_tinkoffandroid.ui.screens.DetailsScreen
@@ -37,9 +39,36 @@ fun AppNavHost(
                     HomeScreen(
                         allFilms = uiState.response,
                         onCardClick = { film: Film ->
-                            viewModel.updateDetailsScreenStates(film)
+                            viewModel.updateRemoteDetailsScreenStates(film)
                             navController.navigate("DetailsScreen")
-                        }
+                        },
+                        onLongClick = {film: Film ->
+                            viewModel.insertFilmToFavourite(film)
+                        },
+                        navController = navController
+                    )
+                }
+
+                is HomeUiState.Error -> {
+                    ErrorScreen({ viewModel.initializeUiState() })
+                }
+
+                is HomeUiState.Loading -> {
+                    LoadingScreen()
+                }
+            }
+        }
+        composable("FavouriteScreen") {
+            when (uiState) {
+                is HomeUiState.Success -> {
+                    HomeScreen(
+                        allFilms = uiState.favouriteFilms.collectAsState(initial = listOf()).value.mapToFilms(),
+                        onCardClick = { film: Film ->
+//                            viewModel.updateDetailsScreenStates(film)
+//                            navController.navigate("DetailsScreen")
+                        },
+                        onLongClick = {},
+                        navController = navController
                     )
                 }
 

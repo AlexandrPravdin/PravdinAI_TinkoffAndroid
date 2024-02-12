@@ -13,5 +13,5 @@ fun FilmApp(
     modifier: Modifier = Modifier
 ) {
     val navController = rememberNavController()
-    AppNavHost(navController)
+    AppNavHost(navController, modifier = modifier)
 }

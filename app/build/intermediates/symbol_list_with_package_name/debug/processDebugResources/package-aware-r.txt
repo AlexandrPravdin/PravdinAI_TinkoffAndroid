@@ -74,6 +74,7 @@ dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
+dimen extra_large
 dimen large
 dimen medium
 dimen notification_action_icon_size

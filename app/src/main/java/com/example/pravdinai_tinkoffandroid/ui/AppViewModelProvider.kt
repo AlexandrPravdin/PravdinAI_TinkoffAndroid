@@ -14,8 +14,10 @@ object AppViewModelProvider {
     val Factory = viewModelFactory {
         initializer {
             FilmViewModel(
-                appApplication().container.filmRepository
+                filmRemoteRepository = appApplication().container.filmRepository,
+                appApplication().database.filmEntityDao()
             )
+
         }
 
     }

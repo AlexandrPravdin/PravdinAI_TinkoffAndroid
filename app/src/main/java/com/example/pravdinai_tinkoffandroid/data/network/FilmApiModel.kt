@@ -10,20 +10,20 @@ data class Response(
 
 @Serializable
 data class Film(
-    val countries: List<Country>,
     val filmId: Int,
-    val filmLength: String,
+    val nameRu: String,
+    val year: String,
+    val posterUrlPreview: String,
     val genres: List<Genre>,
-    val isAfisha: Int,
+//    val filmLength: String,
+//    val isAfisha: Int,
 //    val isRatingUp: Any,
 //    val nameEn: String,
-    val nameRu: String,
-    val posterUrl: String,
-    val posterUrlPreview: String,
-    val rating: String,
+//    val posterUrl: String,
+//    val rating: String,
 //    val ratingChange: Any,
-    val ratingVoteCount: Int,
-    val year: String
+//    val ratingVoteCount: Int,
+//    val countries: List<Country>,
 )
 
 
@@ -31,7 +31,6 @@ data class Film(
 data class Genre(
     val genre: String
 )
-
 
 @Serializable
 data class Country(
