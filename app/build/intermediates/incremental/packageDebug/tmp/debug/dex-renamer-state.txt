@@ -1,4 +1,4 @@
-#Mon Feb 12 05:25:51 MSK 2024
+#Mon Feb 12 06:04:05 MSK 2024
 base.0=/Users/aleksandrpravdin/AndroidStudioProjects/PravdinAI_TinkoffAndroid/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/aleksandrpravdin/AndroidStudioProjects/PravdinAI_TinkoffAndroid/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/aleksandrpravdin/AndroidStudioProjects/PravdinAI_TinkoffAndroid/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex

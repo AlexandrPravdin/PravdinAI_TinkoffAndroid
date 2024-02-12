@@ -15,20 +15,9 @@ data class FilmEntity(
     val nameRu: String,
     val year: String,
     val posterUrlPreview: String,
-//    @ForeignKey(entity = GenreEntity::class, parentColumns = ["id"], childColumns = ["genreId"])
-    val genreId: Int,
-//    @ForeignKey(entity = CountryEntity::class, parentColumns = ["id"], childColumns = ["countryId"])
+    val genre: String,
 )
 
-fun FilmEntity.toFilm(): Film{
-    return Film(
-        filmId = filmId,
-        nameRu = nameRu,
-        year = year,
-        posterUrlPreview = posterUrlPreview,
-        genres = listOf(Genre("fantazy"))
-    )
-}
 
 fun Film.toFilmEntity(): FilmEntity{
     return FilmEntity(
@@ -36,7 +25,7 @@ fun Film.toFilmEntity(): FilmEntity{
         nameRu = nameRu,
         year = year,
         posterUrlPreview = posterUrlPreview,
-        genreId = 1
+        genre = genres.first().genre
     )
 }
 
@@ -47,36 +36,7 @@ fun List<FilmEntity>.mapToFilms(): List<Film> {
             nameRu = filmEntity.nameRu,
             year = filmEntity.year,
             posterUrlPreview = filmEntity.posterUrlPreview,
-            genres = listOf(Genre("filmEntity.genreId")) // Здесь нужно получить список жанров из какого-то репозитория или другого источника
+            genres = listOf(Genre(filmEntity.genre)) // Здесь нужно получить список жанров из какого-то репозитория или другого источника
         )
     }
 }
-
-
-
-/*
-@Entity(tableName = "film_info")
-data class FilmInfoEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val filmId: Int, // Внешний ключ
-    val nameRu: String,
-    val posterUrl: String,
-    val description: String,
-    @ForeignKey(entity = GenreEntity::class, parentColumns = ["id"], childColumns = ["genreId"])
-    val genreId: Int,
-    @ForeignKey(entity = CountryEntity::class, parentColumns = ["id"], childColumns = ["countryId"])
-    val countryId: Int
-)
-
-@Entity(tableName = "genres")
-data class GenreEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val genre: String
-)
-
-@Entity(tableName = "countries")
-data class CountryEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val country: String
-)
-*/

@@ -15,7 +15,6 @@ import com.example.pravdinai_tinkoffandroid.data.local.toFilmEntity
 import com.example.pravdinai_tinkoffandroid.data.network.Film
 import com.example.pravdinai_tinkoffandroid.data.network.FilmDetailed
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import okio.IOException
 
@@ -41,11 +40,12 @@ class FilmViewModel(
 
     fun getAllFavouriteFilms(): Flow<List<FilmEntity>> = filmEntityDao.getAllFilms()
 
-    fun insertFilmToFavourite(film: Film){
+    fun insertFilmToFavourite(film: Film) {
         viewModelScope.launch {
             filmEntityDao.insert(filmEntity = film.toFilmEntity())
         }
     }
+
     var uiState: HomeUiState by mutableStateOf(
         HomeUiState.Loading
     )
@@ -87,12 +87,6 @@ class FilmViewModel(
             } catch (e: HttpException) {
                 HomeUiState.Error(errorName = e.message ?: "")
             }
-        }
-    }
-
-    fun updateLocalDetailsScreenStates(film: Film) {
-        viewModelScope.launch {
-
         }
     }
 }

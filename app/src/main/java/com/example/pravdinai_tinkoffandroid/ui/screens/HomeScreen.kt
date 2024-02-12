@@ -13,12 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,7 +27,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -41,8 +37,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.pravdinai_tinkoffandroid.R
@@ -57,42 +51,21 @@ fun HomeScreen(
     allFilms: List<Film>,
     onCardClick: (Film) -> Unit,
     onLongClick: (Film) -> Unit,
-    navController: NavHostController,
+    title: String,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(topBar = {
-        TopAppBar(
-            modifier = modifier,
-            title = {
-                Text(
-                    text = "Главная",
-                    style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            })
-    }, bottomBar = {
-        BottomAppBar(
-            containerColor = Color.Transparent,
-            modifier = Modifier.height(100.dp)
-        ) {
-            Row(
-                modifier = modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                BottomAppBarButton(
-                    modifier = modifier,
-                    onButtonClick = { navController.navigate("HomeScreen") },
-                    title = "Популярное"
-                )
-                BottomAppBarButton(
-                    modifier = modifier,
-                    onButtonClick = { navController.navigate("FavouriteScreen") },
-                    title = "Избранное"
-                )
-            }
-        }
-    }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                modifier = modifier,
+                title = {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                })
+        },
     ) { innerPadding ->
         HomeScreenColumn(
             modifier = modifier.padding(top = innerPadding.calculateTopPadding()),
@@ -103,26 +76,6 @@ fun HomeScreen(
     }
 }
 
-@Composable
-private fun BottomAppBarButton(
-    title: String,
-    onButtonClick: () -> Unit,
-    modifier: Modifier,
-) {
-    Button(
-        modifier = modifier
-            .height(60.dp)
-            .width(160.dp),
-        onClick = onButtonClick
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-            fontSize = 18.sp
-        )
-    }
-}
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -166,7 +119,6 @@ fun HomeScreenColumn(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilmCardItem(
     filmName: String,
@@ -219,7 +171,6 @@ fun FilmCardItem(
                     color = MaterialTheme.colorScheme.secondary,
                     style = MaterialTheme.typography.bodyLarge,
                 )
-
             }
         }
     }

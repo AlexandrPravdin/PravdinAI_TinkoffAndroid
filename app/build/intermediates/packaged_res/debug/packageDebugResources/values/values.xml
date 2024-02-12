@@ -14,6 +14,8 @@
     <dimen name="small">4dp</dimen>
     <string name="app_name">КиноХранилище: Топ Фильмов</string>
     <string name="error_message">Произошла ошибка при загрузке данных, проверьте подключение к сети</string>
+    <string name="pinned">Избранное</string>
+    <string name="popular">Популярное</string>
     <string name="retry">Повторить</string>
     <style name="Theme.PravdinAI_TinkoffAndroid" parent="android:Theme.Material.Light.NoActionBar"/>
 </resources>

@@ -283,6 +283,8 @@ string navigation_menu
 string not_selected
 string off
 string on
+string pinned
+string popular
 string range_end
 string range_start
 string retry

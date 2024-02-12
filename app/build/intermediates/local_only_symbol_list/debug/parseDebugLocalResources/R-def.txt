@@ -20,6 +20,8 @@ mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string app_name
 string error_message
+string pinned
+string popular
 string retry
 style Theme.PravdinAI_TinkoffAndroid
 xml backup_rules
